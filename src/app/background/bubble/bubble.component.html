@@ -1,0 +1,13 @@
+<div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+  <div *ngFor="let bubble of bubbles"
+       class="absolute rounded-full bg-gradient-to-br from-green-200/30 to-emerald-300/20 animate-float"
+       [ngStyle]="{
+         width: bubble.size + 'px',
+         height: bubble.size + 'px',
+         left: bubble.left + '%',
+         top: bubble.top + '%',
+         animationDelay: bubble.delay + 's',
+         animationDuration: bubble.duration + 's'
+       }">
+  </div>
+</div>

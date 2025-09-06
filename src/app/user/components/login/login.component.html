@@ -1,0 +1,104 @@
+<!-- Backgrounds -->
+<app-bubble></app-bubble>
+<app-dotted></app-dotted>
+
+<div class="min-h-screen flex flex-col items-center justify-center relative z-10 px-4">
+  <!-- Card -->
+  <div class="w-full max-w-md bg-white shadow-2xl rounded-3xl p-10 sm:p-8 md:p-12 lg:p-16 relative z-10">
+
+    <!-- Company Name -->
+    <h1 class="text-4xl font-extrabold text-center text-blue-600 mb-4 sm:mb-3">
+      MyPortfolioHub
+    </h1>
+
+    <!-- Short Description -->
+    <p class="text-center text-gray-500 mb-8 sm:mb-6">
+      Build and showcase your professional portfolio in minutes.
+    </p>
+
+    <!-- Login Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="space-y-6">
+
+      <div class="relative">
+        <label class="block mb-2 text-gray-700 font-medium">Username</label>
+        <input formControlName="username"
+               type="text"
+               placeholder="Enter username"
+               class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-300 shadow-sm">
+        <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
+             class="text-red-500 text-sm mt-1">Username is required</div>
+      </div>
+
+      <div class="relative">
+        <label class="block mb-2 text-gray-700 font-medium">Password</label>
+        <input formControlName="password"
+               type="password"
+               placeholder="Enter password"
+               class="w-full px-5 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-300 shadow-sm">
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+             class="text-red-500 text-sm mt-1">Password is required</div>
+      </div>
+
+      <button type="submit"
+              [disabled]="loading"
+              class="w-full bg-blue-500 hover:bg-blue-600 active:bg-blue-700 text-white py-3 rounded-xl font-semibold transition-all duration-300 transform hover:-translate-y-1 shadow-lg">
+        {{ loading ? 'Logging in...' : 'Login' }}
+      </button>
+    </form>
+
+    <div *ngIf="message" class="text-center text-red-500 mt-3">{{ message }}</div>
+
+    <!-- Other Actions -->
+    <div class="mt-8 flex flex-col gap-4">
+      <button (click)="loginWithGoogle()"
+              class="w-full flex items-center justify-center bg-red-500 hover:bg-red-600 active:bg-red-700 text-white py-3 rounded-xl font-semibold transition-all duration-300 transform hover:-translate-y-1 shadow-lg">
+        <i class="fab fa-google mr-3"></i> Login with Google
+      </button>
+
+      <button (click)="redirectToRegister()"
+              class="w-full bg-blue-400 hover:bg-blue-500 active:bg-blue-600 text-white py-3 rounded-xl font-semibold transition-all duration-300 transform hover:-translate-y-1 shadow-lg">
+        Register
+      </button>
+    </div>
+
+    <div class="mt-6 text-center">
+  <button (click)="openReadme()"
+          class="inline-flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-5 rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+    <i class="fas fa-info-circle"></i> Read Me
+  </button>
+</div>
+
+
+    <!-- Footer / Platform Info -->
+    <p class="mt-6 text-center text-gray-400 text-sm">
+      MyPortfolioHub helps students and professionals create a stunning online portfolio to showcase skills, projects, and achievements.
+    </p>
+  </div>
+</div>
+<!-- Read Me Modal -->
+<div *ngIf="showReadme" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+  <div class="bg-white w-11/12 md:w-2/3 lg:w-1/2 p-8 rounded-3xl shadow-2xl relative">
+    <button (click)="closeReadme()"
+            class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+      <i class="fas fa-times text-xl"></i>
+    </button>
+
+    <h2 class="text-3xl font-bold text-center text-purple-600 mb-6">
+      MyPortfolioHub - Read Me
+    </h2>
+
+    <div class="space-y-4 text-gray-700">
+      <p><i class="fas fa-server text-purple-500 mr-2"></i><strong>Backend:</strong> Spring Boot, JWT, Refresh Token, Spring Security, Google OAuth2</p>
+      <p><i class="fas fa-database text-green-500 mr-2"></i><strong>Database:</strong> Dev - MySQL, Prod - H2</p>
+      <p><i class="fas fa-code text-blue-500 mr-2"></i><strong>Frontend:</strong> Angular 19</p>
+      <p><i class="fas fa-docker text-cyan-500 mr-2"></i><strong>Deployment:</strong> Docker + Render</p>
+    </div>
+
+    <div class="mt-6 text-center">
+      <button (click)="closeReadme()"
+              class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-6 rounded-xl font-semibold shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+        Close
+      </button>
+    </div>
+  </div>
+</div>

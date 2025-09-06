@@ -1,0 +1,33 @@
+<!-- Backgrounds -->
+<app-bubble></app-bubble>
+<app-dotted></app-dotted>
+
+<div class="min-h-screen p-6 relative z-10">
+
+  <h2 class="text-3xl font-bold text-blue-700 mb-8 text-center">Dashboard</h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+
+    <div class="bg-white/20 backdrop-blur-md p-6 rounded-3xl shadow-lg text-center hover:scale-105 transition-transform duration-300">
+      <div class="text-sm text-blue-600 uppercase tracking-wide">Total Portfolios</div>
+      <div class="text-4xl font-extrabold text-blue-900 mt-2">{{ total }}</div>
+    </div>
+
+    <div class="bg-white/20 backdrop-blur-md p-6 rounded-3xl shadow-lg text-center hover:scale-105 transition-transform duration-300">
+      <div class="text-sm text-blue-600 uppercase tracking-wide">Public</div>
+      <div class="text-4xl font-extrabold text-blue-900 mt-2">{{ publicCount }}</div>
+    </div>
+
+    <div class="bg-white/20 backdrop-blur-md p-6 rounded-3xl shadow-lg text-center hover:scale-105 transition-transform duration-300">
+      <div class="text-sm text-blue-600 uppercase tracking-wide">Private</div>
+      <div class="text-4xl font-extrabold text-blue-900 mt-2">{{ privateCount }}</div>
+    </div>
+
+  </div>
+
+  <div class="max-w-2xl mx-auto p-6 rounded-3xl bg-white/10 backdrop-blur-md shadow-lg text-center">
+    <p class="text-blue-700 font-medium mb-2">Summary</p>
+    <p class="text-blue-900 text-lg">You currently have {{ total }} portfolios. {{ publicCount }} are public and {{ privateCount }} are private.</p>
+  </div>
+
+</div>

@@ -1,0 +1,32 @@
+.sidebar-gradient {
+      background: linear-gradient(-45deg, #3b82f6, #6366f1, #8b5cf6, #ec4899);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Bubble animation for background */
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: float 15s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      25% { transform: translateY(-20px) translateX(10px); }
+      50% { transform: translateY(-35px) translateX(-15px); }
+      75% { transform: translateY(-15px) translateX(15px); }
+    }
+
+    /* Dotted pattern for background */
+    .dotted-bg {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px);
+      background-size: 30px 30px;
+    }

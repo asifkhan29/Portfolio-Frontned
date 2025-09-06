@@ -1,0 +1,36 @@
+<div
+  class="bg-blue-50/30 backdrop-blur-md rounded-3xl shadow-lg p-4 hover:shadow-2xl transition cursor-pointer"
+  (click)="open.emit()"
+>
+  <div class="flex items-center gap-4">
+    <img
+      [src]="portfolio.photo ? 'data:image/jpeg;base64,' + portfolio.photo : '/assets/default-avatar.png'"
+      class="w-16 h-16 rounded-full object-cover border-2 border-blue-400"
+      alt="photo"
+    />
+
+    <div class="flex-1">
+      <div class="flex items-center justify-between">
+        <h3 class="text-lg font-semibold text-blue-900">{{ portfolio.name }}</h3>
+        <span
+          class="text-sm px-2 py-1 rounded-full font-medium"
+          [ngClass]="portfolio.public ? 'bg-green-500 text-white' : 'bg-gray-400 text-white'"
+        >
+          {{ portfolio.public ? 'Public' : 'Private' }}
+        </span>
+      </div>
+
+      <p class="text-sm text-blue-900">{{ portfolio.email }}</p>
+      <p class="text-sm text-blue-900">{{ portfolio.phoneNumber }}</p>
+
+      <div class="mt-2 flex flex-wrap gap-2">
+        <span
+          *ngFor="let s of portfolio.skills"
+          class="text-xs bg-blue-100/40 text-blue-900 px-2 py-1 rounded-full"
+        >
+          {{ s }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<!-- Backgrounds -->
+<app-bubble></app-bubble>
+<app-dotted></app-dotted>
+
+<div class="min-h-screen relative z-10 p-6">
+
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="text-2xl font-bold text-black">Your Portfolios</h1>
+    <div class="flex items-center gap-3">
+      <button (click)="goAdd()"
+              class="bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 text-white px-4 py-2 rounded-xl font-semibold shadow-lg transition transform hover:-translate-y-1">
+        + Add
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading / Error -->
+  <div *ngIf="loading" class="text-center py-10 text-indigo-200 font-medium text-lg">Loading...</div>
+  <div *ngIf="error" class="text-center py-10 text-red-400 font-medium text-lg">{{ error }}</div>
+
+  <!-- No portfolio message -->
+  <div *ngIf="!loading && portfolios?.length === 0"
+       class="text-center py-20 text-black/70 font-semibold text-lg">
+    No portfolio added yet
+  </div>
+
+  <!-- Portfolio grid -->
+  <div *ngIf="portfolios.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <app-portfolio-card
+      *ngFor="let p of portfolios"
+      [portfolio]="p"
+      (open)="openDetail(p)">
+    </app-portfolio-card>
+  </div>
+</div>

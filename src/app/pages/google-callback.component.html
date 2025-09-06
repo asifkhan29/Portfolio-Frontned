@@ -1,0 +1,42 @@
+<!-- Backgrounds -->
+<app-bubble></app-bubble>
+<app-dotted></app-dotted>
+
+<div class="min-h-screen flex flex-col items-center justify-center relative z-10 px-4">
+  <!-- Loader Icon -->
+  <div class="animate-pulse text-blue-600">
+    <ng-container [ngSwitch]="loadingState">
+      <svg *ngSwitchCase="'auth'" xmlns="http://www.w3.org/2000/svg" class="w-24 h-24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A10.05 10.05 0 0112 15c2.21 0 4.236.72 5.879 1.927M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+      <svg *ngSwitchCase="'fetch'" xmlns="http://www.w3.org/2000/svg" class="w-24 h-24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+      </svg>
+      <svg *ngSwitchCase="'setup'" xmlns="http://www.w3.org/2000/svg" class="w-24 h-24 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v2m6.364 1.636l-1.414 1.414M20 12h-2M17.364 17.364l-1.414-1.414M12 20v-2M6.636 17.364l1.414-1.414M4 12h2M6.636 6.636l1.414 1.414" />
+      </svg>
+      <svg *ngSwitchDefault xmlns="http://www.w3.org/2000/svg" class="w-24 h-24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <circle cx="12" cy="12" r="10" stroke-width="2" />
+      </svg>
+    </ng-container>
+  </div>
+
+  <h1 class="text-3xl font-bold text-blue-700 mt-6 mb-2 text-center">
+    Portfolio Platform
+  </h1>
+
+  <p class="text-blue-600 mb-4 font-medium text-center">{{ getLoadingMessage() }}</p>
+
+  <!-- Animated dots -->
+  <div class="flex space-x-2 mb-6">
+    <div class="w-2 h-2 bg-blue-600 rounded-full animate-bounce"></div>
+    <div class="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style="animation-delay:150ms"></div>
+    <div class="w-2 h-2 bg-blue-600 rounded-full animate-bounce" style="animation-delay:300ms"></div>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="w-64 h-2 bg-blue-100 rounded-full overflow-hidden">
+    <div class="h-full bg-blue-600 rounded-full transition-all duration-300" [style.width]="getProgressWidth()"></div>
+  </div>
+
+</div>

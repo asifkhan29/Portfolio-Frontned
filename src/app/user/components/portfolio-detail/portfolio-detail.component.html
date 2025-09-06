@@ -1,0 +1,87 @@
+<!-- Backgrounds -->
+<app-bubble></app-bubble>
+<app-dotted></app-dotted>
+
+<div class="p-6 max-w-3xl mx-auto relative z-10">
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="text-center text-blue-700 font-semibold text-lg mb-6">
+    Loading...
+  </div>
+
+  <div *ngIf="portfolio"
+       class="bg-blue-50/20 backdrop-blur-md rounded-3xl p-6 shadow-lg border border-blue-200/30 transition hover:shadow-2xl">
+
+    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
+
+      <!-- Profile Photo -->
+      <img
+        [src]="portfolio.photo ? 'data:image/jpeg;base64,' + portfolio.photo : '/assets/default-avatar.png'"
+        class="w-20 h-20 rounded-full object-cover border-2 border-blue-400 shadow-md"
+        alt="photo" />
+
+      <!-- Info -->
+      <div class="flex-1">
+        <h2 class="text-2xl font-bold text-blue-900">{{ portfolio.name }}</h2>
+        <p class="text-sm text-blue-800/70">{{ portfolio.email }}</p>
+        <p class="text-sm text-blue-800/70">{{ portfolio.phoneNumber }}</p>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex flex-col sm:flex-row gap-2 mt-4 sm:mt-0">
+        <button (click)="toggleVisibility()"
+                class="px-4 py-2 rounded-xl bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-medium transition transform hover:scale-105 shadow">
+          {{ portfolio.public ? 'Make Private' : 'Make Public' }}
+        </button>
+        <button (click)="delete()"
+                class="px-4 py-2 rounded-xl bg-red-500 hover:bg-red-600 text-white font-medium transition transform hover:scale-105 shadow">
+          Delete
+        </button>
+      </div>
+    </div>
+
+    <hr class="my-6 border-blue-200/30" />
+
+    <!-- Edit Form -->
+    <form [formGroup]="editForm" (ngSubmit)="save()" class="space-y-4">
+      <input formControlName="name"
+             placeholder="Name"
+             class="w-full px-4 py-2 rounded-xl border border-blue-300 bg-blue-50 text-blue-900 placeholder-blue-400 focus:ring-2 focus:ring-blue-400 focus:outline-none transition" />
+      <input formControlName="email"
+             placeholder="Email"
+             class="w-full px-4 py-2 rounded-xl border border-blue-300 bg-blue-50 text-blue-900 placeholder-blue-400 focus:ring-2 focus:ring-blue-400 focus:outline-none transition" />
+      <input formControlName="phoneNumber"
+             placeholder="Phone Number"
+             class="w-full px-4 py-2 rounded-xl border border-blue-300 bg-blue-50 text-blue-900 placeholder-blue-400 focus:ring-2 focus:ring-blue-400 focus:outline-none transition" />
+      <input formControlName="address"
+             placeholder="Address"
+             class="w-full px-4 py-2 rounded-xl border border-blue-300 bg-blue-50 text-blue-900 placeholder-blue-400 focus:ring-2 focus:ring-blue-400 focus:outline-none transition" />
+
+      <div class="flex flex-wrap gap-3 mt-2">
+        <button type="submit"
+                class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-xl font-semibold shadow-lg transition transform hover:-translate-y-1">
+          Save
+        </button>
+        <button type="button" (click)="load()"
+                class="px-6 py-3 border border-blue-300 text-blue-900 rounded-xl hover:bg-blue-100 transition transform hover:-translate-y-1">
+          Reload
+        </button>
+      </div>
+    </form>
+
+    <!-- Public Link -->
+    <div *ngIf="portfolio?.public" class="mt-6 text-sm text-blue-800/70">
+      Public link:
+      <a class="text-blue-600 hover:text-blue-700 underline"
+         href="/public/portfolio/{{portfolio.id}}" target="_blank">
+        /public/portfolio/{{portfolio.id}}
+      </a>
+    </div>
+  </div>
+
+  <!-- No portfolio added -->
+  <div *ngIf="!portfolio && !loading" class="text-center text-blue-700 font-semibold mt-10">
+    No portfolio added yet.
+  </div>
+
+</div>
