@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DottedComponent } from '../background/dotted/dotted.component';
 import { BubbleComponent } from '../background/bubble/bubble.component';
 import { buffer } from 'rxjs';
+import { environment } from '../../../environment';
 
 
 type LoadingState = 'initial' | 'auth' | 'fetch' | 'setup';
@@ -40,7 +41,7 @@ export class GoogleCallbackComponent implements OnInit {
 
       this.loadingState = 'fetch';
       const response: any = await this.http.post(
-        `http://localhost:8080/login/google/callback?code=${code}`,
+        `${environment.apiBaseUrl}/login/google/callback?code=${code}`,
         {}
       ).toPromise();
 
