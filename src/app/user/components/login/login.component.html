@@ -74,8 +74,7 @@
       MyPortfolioHub helps students and professionals create a stunning online portfolio to showcase skills, projects, and achievements.
     </p>
   </div>
-</div>
-<!-- Read Me Modal -->
+  <!-- Read Me Modal -->
 <div *ngIf="showReadme" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
   <div class="bg-white w-11/12 md:w-2/3 lg:w-1/2 p-8 rounded-3xl shadow-2xl relative">
     <button (click)="closeReadme()"
@@ -89,9 +88,11 @@
 
     <div class="space-y-4 text-gray-700">
       <p><i class="fas fa-server text-purple-500 mr-2"></i><strong>Backend:</strong> Spring Boot, JWT, Refresh Token, Spring Security, Google OAuth2</p>
+      <p><i class="fas fa-envelope text-red-500 mr-2"></i><strong>OTP:</strong> JavaMailSender used to send email-based OTPs for login/registration verification</p>
       <p><i class="fas fa-database text-green-500 mr-2"></i><strong>Database:</strong> Dev - MySQL, Prod - H2</p>
       <p><i class="fas fa-code text-blue-500 mr-2"></i><strong>Frontend:</strong> Angular 19</p>
       <p><i class="fas fa-docker text-cyan-500 mr-2"></i><strong>Deployment:</strong> Docker + Render</p>
+      <p><i class="fas fa-book text-yellow-500 mr-2"></i><strong>Documentation:</strong> Swagger UI available at <a href="https://portfolio-backend-20s0.onrender.com/swagger-ui/index.html" class="text-blue-500 hover:underline">/swagger-ui.html</a></p>
     </div>
 
     <div class="mt-6 text-center">
@@ -102,3 +103,6 @@
     </div>
   </div>
 </div>
+
+</div>
+
