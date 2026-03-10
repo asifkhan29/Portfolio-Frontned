@@ -9,7 +9,11 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 })
 export class AuthGuard implements CanActivate {
 
-  private API_BASE = 'http://localhost:8080/api/auth';
+  // private API_BASE = 'https://portfolio-backend-20s0.onrender.com/api/auth';
+     private API_BASE = 'http://localhost:8080/api/auth';
+
+
+
 
   constructor(private router: Router, private http: HttpClient) {}
 

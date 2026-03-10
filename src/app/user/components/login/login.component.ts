@@ -58,7 +58,9 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithGoogle() {
-  window.location.href = 'http://localhost:8080/login/google';
+  // window.location.href = 'https://portfolio-backend-20s0.onrender.com/login/google';
+    window.location.href = 'http://localhost:8080/login/google';
+
 }
 redirectToRegister() {
     this.router.navigate(['/user/register']);

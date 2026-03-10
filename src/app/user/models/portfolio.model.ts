@@ -15,4 +15,6 @@ export interface Portfolio {
   skills?: string[];
   userId?: string;
   public?: boolean;
+  generatedHtml?: string
+
 }
